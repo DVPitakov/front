@@ -10,7 +10,6 @@ module.exports = {
    	"host": "http://localhost:3000",
 
 	paths: {
-		'/messages': require('./resources/messages'),
 		'/signup': require('./resources/signup'),
 		'/signin': require('./resources/signin'),
 		'/signout': require('./resources/signout'),
@@ -18,7 +17,6 @@ module.exports = {
 	},
 
 	definitions: {
-		Message: require('./scheme/Message'),
 		Game: require('./scheme/Game'),
 		WSMessage: require('./scheme/WSMessage'),
 	}
