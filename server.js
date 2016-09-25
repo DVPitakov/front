@@ -16,12 +16,13 @@ app.post('/api/messages', (req, res) => {
 	technolibs.publish(req.body).then(body => res.json(req.body));
 });
 
-app.get('/api/messages', function (req, res) {
+
+
+app.get('/api/games', function (req, res) {
 	res.send([
-		technoDoc.mock(require('./api/scheme/Message')),
-		technoDoc.mock(require('./api/scheme/Message')),
-		technoDoc.mock(require('./api/scheme/Message')),
-		technoDoc.mock(require('./api/scheme/Message'))
+		technoDoc.mock(require('./api/scheme/Game')),
+		technoDoc.mock(require('./api/scheme/Game')),
+		technoDoc.mock(require('./api/scheme/Game'))
 	])
 });
 

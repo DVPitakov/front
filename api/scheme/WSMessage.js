@@ -15,5 +15,5 @@ module.exports =  {
 
 		}
 	},
-	"required": ["gameId"]
+	"required": ["actionId", "actionData"]
 };

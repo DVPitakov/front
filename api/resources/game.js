@@ -27,8 +27,7 @@ exports.get = {
 		"description": "создание тестового сообщения",
 		"request": {
 			"params": {
-				"login": "test",
-				"text": "Проверяем"
+				"session": "1"
 			}
 		},
 		"response": {
@@ -38,16 +37,8 @@ exports.get = {
 			},
 			"validator": function (res) {
 
-				if (typeof res.id !== 'number' ) {
-					return 'не корректный id';
-				}
-
-				if (typeof res.message !== 'string') {
+				if (typeof res.session !== 'string') {
 					return 'не корректный текст сообщения';
-				}
-
-				if (typeof res.email !== 'string') {
-					return 'не корректный login';
 				}
 
 				return true;
@@ -87,8 +78,8 @@ exports.post = {
 		"description": "создание тестового сообщения",
 		"request": {
 			"params": {
-				"login": "test",
-				"text": "Проверяем"
+				"session": "1",
+				"gameId": 1
 			}
 		},
 		"response": {
@@ -98,16 +89,12 @@ exports.post = {
 			},
 			"validator": function (res) {
 
-				if (typeof res.id !== 'number' ) {
+				if (typeof res.gameId !== 'number' ) {
 					return 'не корректный id';
 				}
 
-				if (typeof res.message !== 'string') {
-					return 'не корректный текст сообщения';
-				}
-
-				if (typeof res.email !== 'string') {
-					return 'не корректный login';
+				if (typeof res.session !== 'string') {
+					return 'не корректая сессия';
 				}
 
 				return true;
@@ -129,7 +116,7 @@ exports.put = {
 			"name": "count",
 			"in": "query",
 			"description": "Количество игроков в игре",
-			"type": "string"
+			"type": "integer"
 		}
 	],
 	"responses": {
@@ -144,11 +131,11 @@ exports.put = {
 		}
 	},
 	"x-amples": [{
-		"description": "создание тестового сообщения",
+		"description": "создание новой игры",
 		"request": {
 			"params": {
-				"login": "test",
-				"text": "Проверяем"
+				"session": "1",
+				"count": 2
 			}
 		},
 		"response": {
@@ -161,15 +148,18 @@ exports.put = {
 				if (typeof res.id !== 'number' ) {
 					return 'не корректный id';
 				}
+				
+				if (res.count < 2) {
+					return 'слишком мало игроков';
+				}
+				
+				if (res.count > 6) {
+					return 'слишком много игроков';
+				}
 
 				if (typeof res.message !== 'string') {
-					return 'не корректный текст сообщения';
+					return 'не корректный идентификатор сессии';
 				}
-
-				if (typeof res.email !== 'string') {
-					return 'не корректный login';
-				}
-
 				return true;
 			}
 		}
@@ -197,11 +187,10 @@ exports.delete = {
 		}
 	},
 	"x-amples": [{
-		"description": "создание тестового сообщения",
+		"description": "Выход тестового пользователя",
 		"request": {
 			"params": {
-				"login": "test",
-				"text": "Проверяем"
+				"session": "1"
 			}
 		},
 		"response": {
@@ -210,17 +199,8 @@ exports.delete = {
 				"content-type": "application/json"
 			},
 			"validator": function (res) {
-
-				if (typeof res.id !== 'number' ) {
-					return 'не корректный id';
-				}
-
 				if (typeof res.message !== 'string') {
-					return 'не корректный текст сообщения';
-				}
-
-				if (typeof res.email !== 'string') {
-					return 'не корректный login';
+					return 'не корректный идентификатор сессии';
 				}
 
 				return true;

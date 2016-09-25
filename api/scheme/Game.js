@@ -16,5 +16,5 @@ module.exports =  {
 				}
 		}
 	},
-	"required": ["gameId"]
+	"required": ["gameId", "usersArray"]
 };

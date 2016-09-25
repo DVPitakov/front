@@ -25,11 +25,11 @@ exports.post = {
 		}
 	},
 	"x-amples": [{
-		"description": "создание тестового сообщения",
+		"description": "Вход пользователя",
 		"request": {
 			"params": {
-				"login": "test",
-				"text": "Проверяем"
+				"email": "test",
+				"password": "test"
 			}
 		},
 		"response": {
@@ -39,17 +39,14 @@ exports.post = {
 			},
 			"validator": function (res) {
 
-				if (typeof res.id !== 'number' ) {
-					return 'не корректный id';
+				if (typeof res.email !== 'string' ) {
+					return 'не корректный email';
 				}
 
-				if (typeof res.message !== 'string') {
-					return 'не корректный текст сообщения';
+				if (typeof res.password !== 'string') {
+					return 'не корректный тpassword';
 				}
 
-				if (typeof res.email !== 'string') {
-					return 'не корректный login';
-				}
 
 				return true;
 			}
