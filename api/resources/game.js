@@ -117,7 +117,7 @@ exports.post = {
 };
 exports.put = {
 	"tags": ["game"],
-	"description": "Создает новую игру с заданым количеством мест и с пользователем создавшим игру",
+	"description": "Создает новую игру с заданым количеством мест",
 	"parameters": [
 		{
 			"name": "session",
@@ -134,10 +134,10 @@ exports.put = {
 	],
 	"responses": {
 		"200": {
+{
 			"description": "Данные об игре которую создал пользователь",
 			"schema": { 
-			"$ref": "#/definitions/Game"
-				
+			"$ref": "#/definitions/Game",
 			}
 		},
 		"400": {
@@ -190,8 +190,7 @@ exports.delete = {
 	"responses": {
 		"200": {
 			"schema": {
-				"description": "Данные о созданом сообщение",
-				"type": "#/definitions/Message"
+				"description": "Ничего не передается"
 			}
 		},
 		"400": {
