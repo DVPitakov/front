@@ -134,7 +134,6 @@ exports.put = {
 	],
 	"responses": {
 		"200": {
-{
 			"description": "Данные об игре которую создал пользователь",
 			"schema": { 
 			"$ref": "#/definitions/Game",
